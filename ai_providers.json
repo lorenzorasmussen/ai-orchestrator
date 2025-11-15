@@ -1,0 +1,59 @@
+[
+  {
+    "name": "gemini",
+    "provider_type": "gemini-cli",
+    "command": "gemini",
+    "model": "gemini-pro",
+    "max_tokens": 2048,
+    "temperature": 0.7,
+    "timeout": 30,
+    "env_vars": {},
+    "additional_args": []
+  },
+  {
+    "name": "ollama",
+    "provider_type": "ollama",
+    "api_endpoint": "http://localhost:11434",
+    "model": "llama2",
+    "max_tokens": 2048,
+    "temperature": 0.7,
+    "timeout": 60,
+    "env_vars": {},
+    "additional_args": []
+  },
+  {
+    "name": "copilot",
+    "provider_type": "github-copilot",
+    "command": "copilot",
+    "model": null,
+    "max_tokens": 2048,
+    "temperature": null,
+    "timeout": 30,
+    "env_vars": {},
+    "additional_args": ["explain"]
+  },
+  {
+    "name": "qwen",
+    "provider_type": "openai-compatible",
+    "api_endpoint": "http://localhost:8000/v1",
+    "api_key": "your-api-key-here",
+    "model": "qwen-coder",
+    "max_tokens": 2048,
+    "temperature": 0.7,
+    "timeout": 30,
+    "env_vars": {},
+    "additional_args": []
+  },
+  {
+    "name": "zai",
+    "provider_type": "openai-compatible",
+    "api_endpoint": "https://api.z.ai/v1",
+    "api_key": "your-zai-api-key",
+    "model": "zai-coder",
+    "max_tokens": 2048,
+    "temperature": 0.7,
+    "timeout": 30,
+    "env_vars": {},
+    "additional_args": []
+  }
+]
