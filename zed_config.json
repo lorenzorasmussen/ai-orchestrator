@@ -1,0 +1,230 @@
+{
+  "keymap": [
+    {
+      "context": "Editor",
+      "bindings": {
+        "ctrl+alt+a e": "ai_orchestrator::explain_code",
+        "ctrl+alt+a i": "ai_orchestrator::improve_code", 
+        "ctrl+alt+a g": "ai_orchestrator::generate_code",
+        "ctrl+alt+a f": "ai_orchestrator::fix_code",
+        "ctrl+alt+a c": "ai_orchestrator::start_chat",
+        "ctrl+alt+a s": "ai_orchestrator::list_sessions",
+        "ctrl+alt+a q": "ai_orchestrator::stop_session"
+      }
+    }
+  ],
+  
+  "commands": [
+    {
+      "id": "ai_orchestrator::explain_code",
+      "title": "AI: Explain Code",
+      "description": "Explain the selected code or current file using AI"
+    },
+    {
+      "id": "ai_orchestrator::improve_code",
+      "title": "AI: Improve Code", 
+      "description": "Suggest improvements for the selected code or current file"
+    },
+    {
+      "id": "ai_orchestrator::generate_code",
+      "title": "AI: Generate Code",
+      "description": "Generate code based on natural language instruction"
+    },
+    {
+      "id": "ai_orchestrator::fix_code",
+      "title": "AI: Fix Code",
+      "description": "Fix code issues based on error message"
+    },
+    {
+      "id": "ai_orchestrator::start_chat",
+      "title": "AI: Start Chat",
+      "description": "Start a chat session with AI about current code"
+    },
+    {
+      "id": "ai_orchestrator::list_sessions",
+      "title": "AI: List Sessions",
+      "description": "List all active AI sessions"
+    },
+    {
+      "id": "ai_orchestrator::stop_session",
+      "title": "AI: Stop Session",
+      "description": "Stop an active AI session"
+    }
+  ],
+  
+  "external_tools": [
+    {
+      "name": "AI Orchestrator - Explain",
+      "command": "python3",
+      "args": [
+        "/path/to/ai-orchestrator/zed_integration.py",
+        "--explain",
+        "gemini",
+        "--file",
+        "$FILE_PATH",
+        "--selection",
+        "$SELECTION",
+        "--cursor-line",
+        "$CURSOR_LINE",
+        "--cursor-column", 
+        "$CURSOR_COLUMN",
+        "--project-root",
+        "$PROJECT_ROOT"
+      ],
+      "working_directory": "$PROJECT_ROOT"
+    },
+    {
+      "name": "AI Orchestrator - Improve",
+      "command": "python3",
+      "args": [
+        "/path/to/ai-orchestrator/zed_integration.py",
+        "--improve",
+        "ollama",
+        "--file",
+        "$FILE_PATH",
+        "--selection",
+        "$SELECTION",
+        "--cursor-line",
+        "$CURSOR_LINE",
+        "--cursor-column",
+        "$CURSOR_COLUMN", 
+        "--project-root",
+        "$PROJECT_ROOT"
+      ],
+      "working_directory": "$PROJECT_ROOT"
+    },
+    {
+      "name": "AI Orchestrator - Generate",
+      "command": "python3",
+      "args": [
+        "/path/to/ai-orchestrator/zed_integration.py",
+        "--generate",
+        "copilot",
+        "$INSTRUCTION",
+        "--file",
+        "$FILE_PATH",
+        "--selection",
+        "$SELECTION",
+        "--cursor-line",
+        "$CURSOR_LINE",
+        "--cursor-column",
+        "$CURSOR_COLUMN",
+        "--project-root",
+        "$PROJECT_ROOT"
+      ],
+      "working_directory": "$PROJECT_ROOT"
+    },
+    {
+      "name": "AI Orchestrator - Fix",
+      "command": "python3",
+      "args": [
+        "/path/to/ai-orchestrator/zed_integration.py",
+        "--fix",
+        "qwen",
+        "$ERROR_MESSAGE",
+        "--file",
+        "$FILE_PATH", 
+        "--selection",
+        "$SELECTION",
+        "--cursor-line",
+        "$CURSOR_LINE",
+        "--cursor-column",
+        "$CURSOR_COLUMN",
+        "--project-root",
+        "$PROJECT_ROOT"
+      ],
+      "working_directory": "$PROJECT_ROOT"
+    },
+    {
+      "name": "AI Orchestrator - Chat",
+      "command": "python3",
+      "args": [
+        "/path/to/ai-orchestrator/zed_integration.py",
+        "--chat",
+        "gemini",
+        "$MESSAGE",
+        "--file",
+        "$FILE_PATH",
+        "--selection",
+        "$SELECTION", 
+        "--cursor-line",
+        "$CURSOR_LINE",
+        "--cursor-column",
+        "$CURSOR_COLUMN",
+        "--project-root",
+        "$PROJECT_ROOT"
+      ],
+      "working_directory": "$PROJECT_ROOT"
+    },
+    {
+      "name": "AI Orchestrator - List Sessions",
+      "command": "python3",
+      "args": [
+        "/path/to/ai-orchestrator/zed_integration.py",
+        "--list-sessions"
+      ],
+      "working_directory": "$PROJECT_ROOT"
+    }
+  ],
+  
+  "menu": [
+    {
+      "title": "AI Orchestrator",
+      "items": [
+        {
+          "title": "Explain Code",
+          "command": "ai_orchestrator::explain_code"
+        },
+        {
+          "title": "Improve Code", 
+          "command": "ai_orchestrator::improve_code"
+        },
+        {
+          "title": "Generate Code",
+          "command": "ai_orchestrator::generate_code"
+        },
+        {
+          "title": "Fix Code",
+          "command": "ai_orchestrator::fix_code"
+        },
+        {
+          "title": "Start Chat",
+          "command": "ai_orchestrator::start_chat"
+        },
+        {
+          "title": "List Sessions",
+          "command": "ai_orchestrator::list_sessions"
+        },
+        {
+          "title": "Stop Session",
+          "command": "ai_orchestrator::stop_session"
+        }
+      ]
+    }
+  ],
+  
+  "installation_notes": {
+    "setup": [
+      "1. Clone or download the AI Orchestrator repository",
+      "2. Update the '/path/to/ai-orchestrator/' paths in this configuration to your actual installation path",
+      "3. Add this configuration to your Zed settings (zed/settings.json)",
+      "4. Restart Zed to load the new configuration",
+      "5. Use the keyboard shortcuts or command palette to access AI features"
+    ],
+    "keyboard_shortcuts": {
+      "Ctrl+Alt+A+E": "Explain selected code",
+      "Ctrl+Alt+A+I": "Improve selected code", 
+      "Ctrl+Alt+A+G": "Generate new code",
+      "Ctrl+Alt+A+F": "Fix code issues",
+      "Ctrl+Alt+A+C": "Start AI chat",
+      "Ctrl+Alt+A+S": "List active sessions",
+      "Ctrl+Alt+A+Q": "Stop AI session"
+    },
+    "providers": {
+      "gemini": "Google Gemini - Good for general coding and explanations",
+      "ollama": "Local Ollama - Privacy-focused, runs locally",
+      "copilot": "GitHub Copilot - Excellent for code completion and suggestions",
+      "qwen": "Qwen - Strong for programming and technical tasks"
+    }
+  }
+}
